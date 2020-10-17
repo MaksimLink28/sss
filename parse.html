@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Пасинг</title>
+  <style>
+body{
+	background-color: #101010;
+	font-family: Montserrat,Consolas;
+}
+h1 , p, h4,h3,h2,h5,h6, ul, li{
+	color: white;
+}
+pre{
+	background-color: #eee;
+}
+header {
+    background-color: #343434;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #5f5f5f;
+}
+.gree{
+    background: #101010;
+    color: white;
+    cursor: pointer;
+    color: #fff;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    border-radius: 0;
+    border: 1px solid;
+    -webkit-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    background-color: #343434;
+    color: white;
+    border-color: #343434;
+    color: white;
+    -moz-transition: color 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+    text-decoration: none;
+}
+.gree:hover{
+    color: green;
+}
+.temes {
+    background: #101010;
+    color: white;
+    width: 50px;
+    cursor: pointer;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 18px;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    border-radius: 0;
+    border: 1px solid;
+    -webkit-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    background-color: #343434;
+    color: white;
+    border-color: #343434;
+    color: white;
+    -moz-transition: color 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+    text-decoration: none;
+}
+.temes:hover{
+    color: green;
+}
+a{
+	color: white;
+}
+  </style>
+ </head>
+ <body>
+ 	<header class="container">
+    <div class = "title">
+<strong><a href = "Chpora_progery.html"><h1 class="gree">Шпаргалка програміста</h1></a></strong>
+<h4>
+<strong><a class="temes" href = "parce.html" class="gree">Парсинг сайтів</a></strong>
+<strong><a class="temes" href = "tkinter.html" class="gree">Графічна програма</a></strong></h4>
+</div>
+</header>
+  <h1>Парсинг</h1>
+  <hr>
+  <p>Парсинг це процес аналізу вхідної послідовності символів, з метою розбору граматичної структури згідно із заданою формальною граматикою. Синтаксичний аналізатор — це програма або частина програми, яка виконує синтаксичний аналіз</p>
+ </body>
+ <h4>Бібліотеки</h4>
+ <hr>
+ <p>
+ 	Будемо ми робити парсер курсу доллара
+</p>
+<p>
+	Для початку ми завантажемо 2 бібліотеки: beautifulSoup4, requests
+	для того щоб їх завантажити пропишимо у cmd: 
+</p>
+<pre>
+	pip install requests
+	pip install BeautifulSoup4
+</pre>
+<h4>Написання програми</h4>
+<hr>
+<p>
+	Далі потрібно заімпортувати та створити дві змінні
+</p>
+<pre>
+from bs4 import BeautifulSoup
+import requests
+#у змінній dollar ми вказуємо посилання на сайт який будемо парсити
+Dollar = "https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%20%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D0%B0"
+#тут ми вкаазуємо user-agent (його можна дізнатися написавши в google: My user agent)
+user = {"User-Agent": "Your user agent"}
+</pre>
+<p>
+	Далі потрібно створити ще дві змінні
+</p>
+<pre>
+from bs4 import BeautifulSoup
+import requests
+#у змінній dollar ми вказуємо посилання на сайт який будемо парсити
+dollar = "https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81%20%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D0%B0"
+#тут ми вкаазуємо user-agent (його можна дізнатися написавши в google: My user agent)
+user = {"User-Agent": "Your user agent"}
+#у змінній plus ми вказуємо посилання(із змінної dollar) та у змінній headers ми вказуємо наш user-agent(який ми получили із змінної user)
+plus = requests.get(dollar, headers = user)
+#у змінніх soup ми вказуємо що парсимо іменно html код
+soup = BeautifulSoup(plus.content, "html.parser")
+</pre>
+<p>
+Далі нам знадобиться вілкрити сайт який ми будемо парсити (у мому випадку сайт з курсом доллара) і переглянути код сторінки</p>
+<p>
+	Для того щоб переглянути код сторінки вам знадобиться
+	<ul>
+		<li>перейти на потрібний для вас сайт</li>
+		<li>навести мишку на потрібну для вас інформацію</li>
+		<li>нажати праву кнопку миші ті вибрати пункт "Перевірити"</li>
+	</ul>
+</p>
+<p>
+	Тепер давайте допишимо нашу програму
+</p>
+<pre>
+import requests
+from bs4 import BeautifulSoup
+
+dollar = "https://www.google.com/search?q=dollar"
+user = {"user-Agent": "Your user agent"}
+
+plus = requests.get(dollar, headers = user)
+soup = BeautifulSoup(plus.content, "html.parser")
+#тут ми вказуємо яку імено строку кода ми парсимо(у перших душках ми пишемо яку основу ми парсимо(у мому випадку це span) у другому пишемо параметри шо там вказується)
+convert = soup.findAll("span",{"class": "DFlfde SwHCTb" ,"data-precision": "2"})
+#Тепер ми виводимо все у консоль
+print(convert[0].text)
+
+</pre>
+</html>
