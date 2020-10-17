@@ -1,0 +1,374 @@
+<!DOCTYPE>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Графічна програма</title>
+  <style>
+  	header {
+    background-color: #343434;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #5f5f5f;
+}
+.gree{
+	background: #101010;
+    color: white;
+    cursor: pointer;
+    color: #fff;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    border-radius: 0;
+    border: 1px solid;
+    -webkit-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    background-color: #343434;
+    color: white;
+    border-color: #343434;
+    color: white;
+    -moz-transition: color 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+    text-decoration: none;
+}
+.gree:hover{
+    color: green;
+    text-decoration: none;
+}
+a{
+	color: white;
+}
+body{
+	font-family: Montserrat,Consolas;
+	background-color: #101010;
+}
+h1,h2,h3,h4,h5,h6{
+	color: white;
+}
+.temes {
+	font-family: Montserrat,Consolas;
+    background: #101010;
+    color: white;
+    width: 50px;
+    cursor: pointer;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 18px;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    border-radius: 0;
+    border: 1px solid;
+    -webkit-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    background-color: #343434;
+    color: white;
+    border-color: #343434;
+    color: white;
+    -moz-transition: color 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+    text-decoration: none;
+}
+.temes:hover{
+    color: green;
+}
+p, ul, li{
+	color: white;
+}
+p{
+	color: white;
+}
+body{
+	color: white;
+}
+pre{
+	background-color: white;
+	color: black;
+}
+  </style>
+ </head>
+ <body>
+ 	<header class="container">
+    <div class = "title">
+	<strong><a href = "Chpora_progery.html"><h1 class="gree">Шпаргалка програміста</h1></a></strong>
+	<h4>
+	<strong><a class="temes" href = "parce.html" class="gree">Парсинг сайтів</a></strong>
+	<strong><a class="temes" href = "tkinter.html" class="gree">Графічна програма</a></strong></h4>
+</header>
+</div>
+	<h1>Графічна програма</h1>
+	<hr>
+	<p>
+		Для початку потрібно вирішити з якою бібліотекою ми будемо працювати
+		Існують такі бібліотеки як: 
+		<ul>
+			<li>tkinter</li>
+			<li>kivy</li>
+			<li>pyQt</li>
+			<li>turtle</li>
+		</ul>
+		Будемо ми використовувати tkinter
+		а напишемо ми калькулятор
+	</p>
+	<p>
+		Для початку пропишуму стандартну структуру докумена на tkinter
+	</p>
+	<pre>
+#iмпортуємо бібліотеку(завантажувати її не потрібно вона встроєна)
+from tkinter import *
+#вказуємо що змінна root е типу наше вікно
+root = Tk()
+
+#ключаємо програмі вічний цикл(щоб вона при запуску зразу не виключелась)
+root.mainloop()
+	</pre>
+	<p>
+		тепер давайте розберемо параметри екрану
+	</p>
+	<pre>
+from tkinter import *
+root = Tk()
+#встановлюємо назву вікна
+root.title("Hello World!")
+#встановлюємо задній фон
+root["bg"] = "green"
+#встановлюємо ширину і довжину екрану
+root.geometry("600x300")
+#встановлюємо чи зможе наш користувач змінювати ширину чи довжину програми
+root.resizable(width = False , height = False)
+
+root.mainloop()
+	</pre>
+	<p>
+		Тепер ми можемо приступити до розробки нашої програми
+		Для того нам прийдеться розглянути декілька віджетів
+	</p>
+	<h2>Label</h2>
+	<hr>
+	<p>Віджет label представляє собою віджет-текст у якому ми просто виводимо текст у програму</p>
+	<pre>
+from tkinter import *
+root = Tk()
+root.title("Hello World!")
+root["bg"] = "green"
+root.geometry("600x300")
+root.resizable(width = False , height = False)
+#У змінну lbl ми передаємо параметр label у якому ми передаємо ще один параметр text який відповідяє за текст у нашому label
+lbl = Label(text = "Введіть перше число: ")
+#це упаковщик нашої змінної label 
+lbl.pack()
+
+root.mainloop()
+	</pre>
+	<h2>Entry</h2>
+	<hr>
+	<p>
+		Змінна entry це поле для введення тексту
+		Ось приклад її роботи
+	</p>
+	<pre>
+from tkinter import *
+root = Tk()
+root.title("Hello World!")
+root["bg"] = "green"
+root.geometry("600x300")
+root.resizable(width = False , height = False)
+
+lbl = Label(text = "Введіть перше число: ")
+lbl.pack()
+#У змінній entr ми використовуємо параметр Entry який якраз і слугує нашим полем для введення тексту
+entr = Entry()
+#упаковуємо наше поле
+entr.pack()
+
+
+root.mainloop()
+	</pre>
+	<h2>Button</h2>
+	<hr>
+	<p>
+		Змінна Button це кнопка
+		ось приклад її роботи
+	</p>
+	<pre>
+from tkinter import *
+root = Tk()
+root.title("Hello World!")
+root["bg"] = "green"
+root.geometry("600x300")
+root.resizable(width = False , height = False)
+
+lbl = Label(text = "Введіть перше число: ")
+lbl.pack()
+entr = Entry()
+entr.pack()
+
+#Створюємо змінну plus у якій вказуємо що текст кнопки буде +
+plus = Button(text = "+")
+#Упаковуємо кнопку
+plus.pack()
+
+root.mainloop()
+	</pre>
+	<p>
+		Але наша кнопка не робоча 
+		Давайте запрограмуємо кнопку щоб вона виводила Hello World у консоль
+	</p>
+	<pre>
+from tkinter import *
+root = Tk()
+root.title("Hello World!")
+root["bg"] = "green"
+root.geometry("600x300")
+root.resizable(width = False , height = False)
+#у тій змінній якраз і буде працювати наша кнопка
+def do():
+	print("Hello World")
+
+lbl = Label(text = "Введіть перше число: ")
+lbl.pack()
+entr = Entry()
+entr.pack()
+
+#Створюємо змінну plus у якій вказуємо що текст кнопки буде + далі створюємо змінну command у якій вказуєму через що буде працювати наша кнопка
+plus = Button(text = "+", command = do)
+#Упаковуємо кнопку
+plus.pack()
+
+
+root.mainloop()
+	</pre>
+	<p>
+		Добре але наша головна місія створити свій калькулятор тому давайте зробимо зо коли на кнопку нажмуть то у консоль буде виводиться додавання цифр які вві користувач
+	</p>
+	<pre>
+from tkinter import *
+root = Tk()
+root.title("Hello World!")
+root["bg"] = "green"
+root.geometry("600x300")
+root.resizable(width = False , height = False)
+#у тій змінній якраз і буде працювати наша кнопка
+def do():
+	#Створюємо дві змінні що будуть відсліджувати що ввів наш користувач
+	n1 = entr.get()
+	n2 = entr2.get()
+	#виводисо суму того що ввів користувач
+	print(int(n1) + int(n2))
+
+lbl = Label(text = "Введіть перше число: ")
+lbl.pack()
+entr = Entry()
+entr.pack()
+
+lbl2 = Label(text = "Введіть перше число: ")
+lbl2.pack()
+entr2 = Entry()
+entr2.pack()
+
+#Створюємо змінну plus у якій вказуємо що текст кнопки буде + далі створюємо змінну command у якій вказуєму через що буде працювати наша кнопка
+plus = Button(text = "+", command = do)
+#Упаковуємо кнопку
+plus.pack()
+
+
+root.mainloop()
+	</pre>
+	<p>
+		Терпер ми можемо приступити до розробки нашого калькулятора але перед тим давайте вивчимо ще один віджет
+	</p>
+	<h2>Text</h2>
+	<hr>
+	<p>
+		Text відповідає за виведення любої інформації 
+	</p>
+	<p>
+		Давайте зробимо що коли ми нажали на кнопку у текстове поле виводилось Hello World!
+	</p>
+	<pre>
+from tkinter import *
+root = Tk()
+root.title("Hello World!")
+root["bg"] = "green"
+root.geometry("600x300")
+root.resizable(width = False , height = False)
+#у тій змінній якраз і буде працювати наша кнопка
+def do():
+	#Виводимо у змінну у наше текстове поле Hello World!
+	txt.insert(0.0, "Hello World!")
+
+lbl = Label(text = "Введіть перше число: ")
+lbl.pack()
+entr = Entry()
+entr.pack()
+
+lbl2 = Label(text = "Введіть перше число: ")
+lbl2.pack()
+entr2 = Entry()
+entr2.pack()
+
+#Створюємо змінну plus у якій вказуємо що текст кнопки буде + далі створюємо змінну command у якій вказуєму через що буде працювати наша кнопка
+plus = Button(text = "+", command = do)
+#Упаковуємо кнопку
+plus.pack()
+#Створюємо змінну txt яка якраз і буде відігравати роль текстового поля
+txt = Text(wrap = WORD)
+#Упаковуємо
+txt.pack()
+
+root.mainloop()
+	</pre>
+	<p>
+		Тепер ми можемо приступити до розробки нашого калькулятора
+	</p>
+	<pre>
+from tkinter import *
+root = Tk()
+root.title("Hello World!")
+root["bg"] = "green"
+root.geometry("600x300")
+root.resizable(width = False , height = False)
+#у тій змінній якраз і буде працювати наша кнопка
+def do():
+	#Виводимо у текстове поле сумy entr i entr2
+	txt.insert(0.0, int(entr.get()) + int(entr2.get()))
+
+
+lbl = Label(text = "Введіть перше число: ")
+lbl.pack()
+entr = Entry()
+entr.pack()
+
+lbl2 = Label(text = "Введіть перше число: ")
+lbl2.pack()
+entr2 = Entry()
+entr2.pack()
+
+#Створюємо змінну plus у якій вказуємо що текст кнопки буде + далі створюємо змінну command у якій вказуєму через що буде працювати наша кнопка
+plus = Button(text = "+", command = do)
+#Упаковуємо кнопку
+plus.pack()
+#Створюємо змінну txt яка якраз і буде відігравати роль текстового поля
+txt = Text(wrap = WORD)
+#Упаковуємо
+txt.pack()
+
+root.mainloop()
+	</pre>
+	<p>
+		По такому самому принципу ви зможете зробити калькулятор +, -, *, /
+		Але це вам прийдеться вже робити самим
+	</p>
+ </body>
+</html>
